@@ -8,6 +8,7 @@ import connectDB from "./utils/connection.util.js";
 
 //routes imports
 import healthRoutes from "./routes/health.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 
 const CORS_OPTIONS = {
   origin: "http//localhost:5173",
@@ -28,6 +29,7 @@ app.use(cors(CORS_OPTIONS));
 
 //routes
 app.use(healthRoutes);
+app.use("/api/auth", authRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
