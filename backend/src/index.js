@@ -10,6 +10,8 @@ import connectDB from "./utils/connection.util.js";
 import healthRoutes from "./routes/health.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import campaignRoute from "./routes/campaign.routes.js";
+import registerRoute from "./routes/register.routes.js";
+import certificateRoutes from "./routes/certificate.routes.js";
 
 const CORS_OPTIONS = {
   origin: "http//localhost:5173",
@@ -31,7 +33,9 @@ app.use(cors(CORS_OPTIONS));
 //routes
 app.use(healthRoutes);
 app.use("/api/auth", authRoutes);
-app.use("/api", campaignRoute);
+app.use("/api/ngo", campaignRoute);
+app.use("/api/volunteer", registerRoute);
+app.use("/api", certificateRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

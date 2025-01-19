@@ -5,14 +5,10 @@ import {
   validateCampaignData,
   validateUpdateCampaignData,
   validateProgressUpdate,
-  validateRegisterCampaign,
 } from "../validators/campaign.validator.js";
 
 //middlewares import
-import {
-  authMiddleware,
-  ngoAuthMiddleware,
-} from "../middlewares/auth.middleware.js";
+import { ngoAuthMiddleware } from "../middlewares/auth.middleware.js";
 
 //contollers import
 import {
@@ -22,44 +18,31 @@ import {
   updateCampaign,
   deleteCampaign,
   updateProgress,
-  registerCampaign,
 } from "../controllers/campaign.controller.js";
 
 const router = express.Router();
 
 // Campaign Routes
 router.post(
-  "/ngo/campaign/create",
+  "/campaign/create",
   ngoAuthMiddleware,
   validateCampaignData,
   createCampaign
 );
-router.get("/ngo/campaigns", ngoAuthMiddleware, listedCampaign); // List campaigns created by the NGO
-router.get("/ngo/campaign/:id", ngoAuthMiddleware, getCampaign); // Get details of a specific campaign
+router.get("/campaigns", ngoAuthMiddleware, listedCampaign); // List campaigns created by the NGO
+router.get("/campaign/:id", ngoAuthMiddleware, getCampaign); // Get details of a specific campaign
 router.put(
-  "/ngo/campaign/:id/update",
+  "/campaign/:id/update",
   ngoAuthMiddleware,
   validateUpdateCampaignData,
   updateCampaign
 ); // Update campaign details
-router.delete(
-  "/ngo/campaign/:id/delete",
-  ngoAuthMiddleware,
-  deleteCampaign,
-  registerCampaign
-); // Delete a campaign
+router.delete("/campaign/:id/delete", ngoAuthMiddleware, deleteCampaign); // Delete a campaign
 router.post(
-  "/ngo/campaign/:id/updateProgress",
+  "/campaign/:id/updateProgress",
   ngoAuthMiddleware,
   validateProgressUpdate,
   updateProgress
-);
-
-router.post(
-  "/volunteer/registerCampaign",
-  authMiddleware,
-  validateRegisterCampaign,
-  registerCampaign
 );
 
 export default router;

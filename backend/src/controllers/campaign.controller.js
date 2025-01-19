@@ -11,6 +11,8 @@ export const createCampaign = async (req, res) => {
       endDate,
       location,
       maxRegistrations,
+      areaOfWork,
+      requiredSkills,
       totalHours,
     } = req.body;
     const ngoId = req.user.userId;
@@ -22,6 +24,8 @@ export const createCampaign = async (req, res) => {
       totalHours,
       endDate,
       location,
+      areaOfWork,
+      requiredSkills,
       maxRegistrations,
       ngoId, // Assuming ngoId was sent as part of the validated request body
     });
@@ -107,6 +111,8 @@ export const updateCampaign = async (req, res) => {
       location,
       maxRegistrations,
       certificateTemplate,
+      areaOfWork,
+      requiredSkills,
       totalHours,
     } = req.body;
 
@@ -130,6 +136,8 @@ export const updateCampaign = async (req, res) => {
     campaign.maxRegistrations = maxRegistrations || campaign.maxRegistrations;
     campaign.certificateTemplate =
       certificateTemplate || campaign.certificateTemplate;
+    campaign.areaOfWork = areaOfWork || campaign.areaOfWork;
+    campaign.requiredSkills = requiredSkills || campaign.requiredSkills;
 
     // Save the updated campaign
     const updatedCampaign = await campaign.save();
@@ -257,71 +265,3 @@ export const updateProgress = async (req, res) => {
   }
 };
 
-export const registerCampaign = async (req, res) => {
-  try {
-    const { campaignId } = req.body; // Extract the campaignId from the request body
-    const userId = req.user.userId; // Extract the userId from the authenticated user
-
-    // Ensure the userId is provided (i.e., the user is authenticated)
-    if (!userId) {
-      return res.status(401).json({ message: "Unauthorized", success: false });
-    }
-
-    // Find the user (volunteer) by their ID
-    const user = await Volunteer.findById(userId);
-    if (!user) {
-      return res
-        .status(404)
-        .json({ message: "Volunteer not found", success: false });
-    }
-
-    // Find the campaign by its ID
-    const campaign = await Campaign.findById(campaignId);
-    if (!campaign) {
-      return res
-        .status(404)
-        .json({ message: "Campaign not found", success: false });
-    }
-
-    // Check if the volunteer is already registered for this campaign
-    const alreadyApplied = user.profile.campaignsApplied.some(
-      (task) => task.taskId.toString() === campaignId.toString()
-    );
-    if (alreadyApplied) {
-      return res.status(400).json({
-        message: "You have already applied for this campaign",
-        success: false,
-      });
-    }
-
-    // Add the campaign to the volunteer's campaignsApplied array
-    user.profile.campaignsApplied.push({
-      taskId: campaignId,
-      status: "Pending", // Initially, the status is "Pending"
-      completionStatus: "Ongoing", // Completion status is initially "Ongoing"
-      completedHours: 0, // Set initial completed hours to 0
-      feedback: "", // Initially empty
-      ratings: null, // Initially no ratings
-    });
-
-    // Save the updated volunteer document
-    await user.save();
-
-    campaign.registeredVolunteers.push({
-      volunteerId: userId,
-      status: "Pending",
-    });
-    await campaign.save();
-    // Return a success response with the updated volunteer data
-    return res.status(200).json({
-      message: "Campaign registration successful",
-      success: true,
-    });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({
-      message: "Server error. Failed to register for campaign.",
-      error: error.message,
-    });
-  }
-};

@@ -28,6 +28,15 @@ const campaignSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    // New fields added
+    areaOfWork: {
+      type: [{ type: String }], // Array of strings (e.g., ["Health", "Education", "Environment"])
+      required: true, // To ensure the area of work is provided
+    },
+    requiredSkills: {
+      type: [{ type: String }], // Array of strings (e.g., ["Teaching", "Medical Expertise", "Fundraising"])
+      required: true, // To ensure the skills are provided
+    },
     maxRegistrations: {
       type: Number,
       required: true,
@@ -46,6 +55,19 @@ const campaignSchema = new mongoose.Schema(
         },
       },
     ],
+    status: { type: String, enum: ["Active", "Closed"], default: "Active" },
+    totalRegistrations: {
+      type: Number,
+      default: 0,
+      validate: {
+        validator: function (value) {
+          // Ensure totalRegistrations is not greater than maxRegistrations
+          return value <= this.maxRegistrations;
+        },
+        message: (props) =>
+          `Total registrations (${props.value}) cannot exceed max registrations (${props.maxRegistrations})`,
+      },
+    },
     certificateTemplate: { type: String },
     campaignPoster: { type: String },
     totalHours: { type: Number },
