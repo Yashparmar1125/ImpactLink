@@ -44,13 +44,11 @@ const campaignSchema = new mongoose.Schema(
           enum: ["Pending", "Accepted", "Rejected"],
           required: true,
         },
-        progress: {
-          type: String, // e.g., "Completed 50%", "Submitted Report", etc.
-          default: null,
-        },
       },
     ],
     certificateTemplate: { type: String },
+    campaignPoster: { type: String },
+    totalHours: { type: Number },
   },
   {
     timestamps: true, // This automatically adds createdAt and updatedAt fields

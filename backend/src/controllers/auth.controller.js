@@ -113,7 +113,6 @@ export const logout = async (req, res) => {
   }
 };
 
-//volunteer updateProfile controller
 export const updateProfile = async (req, res) => {
   try {
     const { phone, profile } = req.body;
@@ -132,17 +131,37 @@ export const updateProfile = async (req, res) => {
 
     // Check if profile exists and update profile fields
     if (profile) {
-      if (profile.bio) user.profile.bio = profile.bio; // Update bio
-      if (profile.skills) user.profile.skills = profile.skills; // Update skills
+      if (profile.bio !== undefined) user.profile.bio = profile.bio; // Update bio
+      if (profile.interests !== undefined)
+        user.profile.interests = profile.interests; // Update interests
+      if (profile.skills !== undefined) user.profile.skills = profile.skills; // Update skills
+      if (profile.resume !== undefined) user.profile.resume = profile.resume; // Update resume
+      if (profile.profilePhoto !== undefined)
+        user.profile.profilePhoto = profile.profilePhoto; // Update profile photo
+
+      // Update social media details
+      if (profile.social) {
+        if (profile.social.instagram !== undefined)
+          user.profile.social.instagram = profile.social.instagram;
+        if (profile.social.linkedin !== undefined)
+          user.profile.social.linkedin = profile.social.linkedin;
+        if (profile.social.github !== undefined)
+          user.profile.social.github = profile.social.github;
+        if (profile.social.website !== undefined)
+          user.profile.social.website = profile.social.website;
+      }
     }
 
     // Save the updated user data
     await user.save();
 
+    const userResponse = user.toObject();
+    delete userResponse.password;
+
     return res.status(200).json({
       message: "Profile updated successfully",
       success: true,
-      user,
+      userResponse,
     });
   } catch (error) {
     console.log(error);
@@ -256,7 +275,6 @@ export const loginNGO = async (req, res) => {
       .json({
         message: "NGO logged in successfully",
         success: true,
-        ngo,
       });
   } catch (error) {
     console.log(error);

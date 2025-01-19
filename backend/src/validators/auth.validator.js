@@ -61,6 +61,10 @@ export const validateUpdateProfile = [
     .optional()
     .custom((value) => value === null || Array.isArray(value))
     .withMessage("Skills should be an array or null"),
+  body("profile.interests")
+    .optional()
+    .custom((value) => value === null || Array.isArray(value))
+    .withMessage("Skills should be an array or null"),
 
   // Validate 'profile.profilePhoto' (optional, but if provided, must be a valid URL or null)
   body("profile.profilePhoto")
