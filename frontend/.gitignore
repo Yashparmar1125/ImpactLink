@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 Secrets.json
+# Add to .gitignore
+frontend/client_secret_110469472851-6qagf9127o3glbgte1nd4n2sigcev0pe.apps.googleusercontent.com.json
+
