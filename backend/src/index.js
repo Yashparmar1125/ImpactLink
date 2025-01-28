@@ -14,7 +14,7 @@ import registerRoute from "./routes/register.routes.js";
 import certificateRoutes from "./routes/certificate.routes.js";
 
 const CORS_OPTIONS = {
-  origin: "http//localhost:5173",
+  origin: "http://localhost:5173",
   credentials: true,
 };
 

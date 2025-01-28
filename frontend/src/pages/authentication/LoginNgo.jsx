@@ -18,7 +18,7 @@ export default function Login() {
   const handleClick = async () => {
     setLoading(true); // Start loading
     try {
-      const url = "http://localhost:5000/api/auth/volunteer/login";
+      const url = "http://localhost:5000/api/auth/ngo/login";
 
       // Make the POST request to the backend
       const response = await fetch(url, {
@@ -52,7 +52,7 @@ export default function Login() {
           <img className="logo-down" src={logo} alt="logo" />
         </div>
         <div className="login-content">
-          <h1>Volunteer Login</h1>
+          <h1>NGO Login</h1>
           <p>Enter your login credentials</p>
         </div>
 

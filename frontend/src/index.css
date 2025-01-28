@@ -149,3 +149,61 @@ body {
 /* .input-name {
   width: 50px;
 } */
+
+
+/* Login Button when Loading */
+.loading-button {
+  background-color: #3498db; /* Blue background when loading */
+  color: white;
+  cursor: not-allowed; /* Disable the cursor */
+  padding: 10px 20px;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  animation: spin 1.5s linear infinite; /* Apply rotation animation */
+}
+
+/* Keyframes for spinning animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Optional: Add a slight shadow effect to give some depth */
+.loading-button:focus {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Disable button styling */
+.loading-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Styling for non-loading state */
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}

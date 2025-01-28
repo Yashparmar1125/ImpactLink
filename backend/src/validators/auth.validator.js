@@ -6,6 +6,8 @@ export const validateRegistration = [
   body("password").isLength({ min: 6 }),
   body("name").trim().notEmpty(),
   body("phone").isLength({ min: 10 }),
+  body("skills").notEmpty(),
+  body("interests").notEmpty(),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -102,6 +104,7 @@ export const validateNGORegistration = [
   body("ngoContactNumber")
     .isLength({ min: 10 })
     .withMessage("Contact number must be at least 10 digits"),
+  body("regID").trim().notEmpty().withMessage("Registration ID is required..."),
 
   // NGO Address validation (optional, but if provided, it must be a non-empty string)
   body("ngoAddress")
@@ -112,6 +115,7 @@ export const validateNGORegistration = [
 
   // NGO Type validation (must be one of the specified options)
   body("ngoType")
+    .optional()
     .isIn(["Local", "National", "International"])
     .withMessage(
       "NGO Type must be one of 'Local', 'National', 'International'"

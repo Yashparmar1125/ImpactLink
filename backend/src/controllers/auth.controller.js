@@ -11,7 +11,7 @@ import { generatePassword } from "../utils/generatepassword.util.js";
 //volunteer register controller
 export const register = async (req, res) => {
   try {
-    const { name, email, password, phone } = req.body;
+    const { name, email, password, phone, interests, skills } = req.body;
 
     // Check if the user already exists
     const existingVolunteer = await Volunteer.findOne({ email });
@@ -31,6 +31,8 @@ export const register = async (req, res) => {
       phone,
       password: hashedPassword,
     });
+    user.profile.interests = interests;
+    user.profile.skills = skills;
 
     // Save the user to the database
     await user.save();
@@ -196,6 +198,7 @@ export const registerNGO = async (req, res) => {
       ngoAddress,
       ngoType,
       password,
+      regID,
     } = req.body;
 
     // Check if the NGO already exists
@@ -217,6 +220,7 @@ export const registerNGO = async (req, res) => {
       ngoAddress,
       ngoType,
       password: hashedPassword,
+      regID: regID,
       isVerified: true, // Assuming that NGO is verified by default
     });
 
