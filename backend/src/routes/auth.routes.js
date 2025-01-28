@@ -14,6 +14,9 @@ import {
 import {
   register,
   login,
+  googleLoginNgo,
+  googleLoginVolunteer,
+  googleRegisterVolunteer,
   logout,
   updateProfile,
   profile,
@@ -40,6 +43,8 @@ router.post(
   validateUpdateProfile,
   updateProfile
 );
+router.get("/volunteer/google/login", googleLoginVolunteer);
+router.get("/volunteer/google/register", googleRegisterVolunteer);
 
 //routes for ngo
 router.post("/ngo/register", validateNGORegistration, registerNGO); // NGO Registration route
@@ -51,6 +56,7 @@ router.post(
   validateNGOUpdateProfile,
   updateNGOProfile
 );
+router.get("/ngo/google/login", googleLoginNgo);
 //common routes
 router.get("/logout", logout);
 

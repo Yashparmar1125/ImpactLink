@@ -5,6 +5,8 @@ import logo from "../../assets/Images/ImpactLogo.png";
 import google from "../../assets/Images/google.png";
 import facebook from "../../assets/Images/facebook.png";
 import { Link } from "react-router-dom";
+import {useGoogleLogin} from "@react-oauth/google";
+import { googleAuthNgo } from "../../api";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -14,6 +16,23 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  const responseGoogle =async(authResult)=>{
+    try {
+      if(authResult['code']){
+        const result=await googleAuthNgo(authResult['code']);
+        console.log(result.status);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess:responseGoogle,
+    onError:responseGoogle,
+    flow:'auth-code'
+  });
 
   const handleClick = async () => {
     setLoading(true); // Start loading
@@ -86,12 +105,12 @@ export default function Login() {
 
           <p>OR</p>
           <div>
-            <img className="auth-logo" src={google} alt="google-logo" />
+            <img className="auth-logo" src={google} alt="google-logo" onClick={handleGoogleLogin} />
             <img className="auth-logo" src={facebook} alt="facebook-logo" />
           </div>
 
           <p>
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link to="/signup" className="confirmation">
               Sign Up
             </Link>

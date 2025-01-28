@@ -9,7 +9,7 @@ const NGOSchema = new mongoose.Schema(
     ngoAddress: { type: String },
     ngoType: { type: String, enum: ["Local", "National", "International"] },
     ngoLogo: { type: String },
-    isVerified: { type: Boolean, default: false },
+    isVerified: { type: Boolean, default: true },
     password: { type: String, required: true },
   },
   { timestamps: true }

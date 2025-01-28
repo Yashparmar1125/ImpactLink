@@ -6,6 +6,8 @@ import google from "../../assets/Images/google.png";
 import facebook from "../../assets/Images/facebook.png";
 import { Link } from "react-router-dom";
 import Select from "react-select";
+import { googleAuthRegister } from "../../api";
+import {useGoogleLogin} from "@react-oauth/google"
 
 const SignUp = () => {
   // Common state
@@ -26,6 +28,23 @@ const SignUp = () => {
 
   // Toggle between Volunteer and NGO flows
   const [toggleFlow, setToggleFlow] = useState("volunteer");
+
+  const responseGoogle =async(authResult)=>{
+    try {
+      if(authResult['code']){
+        const result=await googleAuthRegister(authResult['code']);
+        console.log(result.status);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleGoogleregister = useGoogleLogin({
+    onSuccess:responseGoogle,
+    onError:responseGoogle,
+    flow:'auth-code'
+  });
 
   const interestsOptions = [
     { value: "video-editing", label: "Video Editing" },
@@ -243,16 +262,21 @@ const SignUp = () => {
               <Button text="Sign Up" />
             </div>
           </form>
+          {toggleFlow === "volunteer" && (
+            <p>OR</p>
+          )}
 
-          <p>OR</p>
-          <div>
-            <img className="auth-logo" src={google} alt="google-logo" />
-            <img className="auth-logo" src={facebook} alt="facebook-logo" />
-          </div>
+          
+          {toggleFlow === "volunteer" && (
+            <div>
+              <img className="auth-logo" src={google} alt="google-logo" onClick={handleGoogleregister} />
+              <img className="auth-logo" src={facebook} alt="facebook-logo" />
+            </div>
+          )}
 
           <p>
             Already have an account? {" "}
-            <Link to="/login" className="confirmation">
+            <Link to={toggleFlow === "volunteer" ? "/volunteer/login" : "/ngo/login"} className="confirmation">
               Login
             </Link>
           </p>

@@ -2,11 +2,13 @@ import { Volunteer } from "../models/volunteer.model.js";
 import { NGO } from "../models/ngo.model.js";
 import nodemailer from "nodemailer";
 import emailjs from "emailjs-com";
+import axios from "axios";
 
 // utils
 import { createToken, verifyToken } from "../utils/jwt.util.js";
 import { hashPassword, comparePassword } from "../utils/password.util.js";
 import { generatePassword } from "../utils/generatepassword.util.js";
+import { oauth2client } from "../utils/googleConfig.js";
 
 //volunteer register controller
 export const register = async (req, res) => {
@@ -188,6 +190,97 @@ export const profile = async (req, res) => {
   }
 };
 
+//google auth register volunteer
+export const googleRegisterVolunteer = async (req, res) => {
+  const { code } = req.query;
+  const googleRes = await oauth2client.getToken(code);
+  oauth2client.setCredentials(googleRes.tokens);
+
+  const userRes = await axios.get(
+    `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${googleRes.tokens.access_token}`
+  );
+  const { email, name, picture } = userRes.data;
+  try {
+    // Check if the user already exists
+    const existingVolunteer = await Volunteer.findOne({ email });
+    if (existingVolunteer) {
+      return res
+        .status(400)
+        .json({ message: "Volunteer already registered", success: false });
+    }
+
+    // Create a new user
+    const user = new Volunteer({
+      name,
+      email,
+    });
+    user.profile.profilePhoto = picture;
+
+    // Save the user to the database
+    await user.save();
+
+    // Create a JWT token
+    const token = createToken(user._id);
+
+    // Send the token in the cookie with proper settings
+    return res
+      .status(200)
+      .cookie("token", token, {
+        maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
+        httpOnly: true, // Prevents access to cookie via JavaScript
+        sameSite: "strict", // Ensures cookies are sent only in same-origin requests
+      })
+      .json({
+        message: "Volunteer registered successfully",
+        success: true,
+      });
+  } catch (error) {
+    res.status(500).json({ message: "Server Error", success: false });
+  }
+};
+
+//google auth login volunteer
+export const googleLoginVolunteer = async (req, res) => {
+  const { code } = req.query;
+  const googleRes = await oauth2client.getToken(code);
+  oauth2client.setCredentials(googleRes.tokens);
+
+  const userRes = await axios.get(
+    `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${googleRes.tokens.access_token}`
+  );
+  const { email } = userRes.data;
+  try {
+    // Find user by email
+    const user = await Volunteer.findOne({ email });
+
+    if (!user) {
+      return res
+        .status(401)
+        .json({ message: "Invalid Credentials", success: false });
+    }
+
+    // Create a JWT token
+    const token = createToken(user._id);
+
+    // Send the token in the cookie with proper settings
+    return res
+      .status(200)
+      .cookie("token", token, {
+        maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
+        httpOnly: true, // Prevents access to cookie via JavaScript
+        sameSite: "strict", // Ensures cookies are sent only in same-origin requests
+      })
+      .json({
+        message: "Logged in successfully",
+        success: true,
+      });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ message: "Internal Server Error", success: false });
+  }
+};
+
 // NGO register controller
 export const registerNGO = async (req, res) => {
   try {
@@ -336,6 +429,52 @@ export const NGOProfile = async (req, res) => {
     }
 
     return res.status(200).json(ngo);
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ message: "Internal Server Error", success: false });
+  }
+};
+
+export const googleLoginNgo = async (req, res) => {
+  const { code } = req.query;
+  const googleRes = await oauth2client.getToken(code);
+  oauth2client.setCredentials(googleRes.tokens);
+
+  const userRes = await axios.get(
+    `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${googleRes.tokens.access_token}`
+  );
+  const { email } = userRes.data;
+  try {
+    // Find NGO by email
+    const ngo = await NGO.findOne({ ngoEmail: email });
+    if (!ngo) {
+      return res.status(401).json({ message: "NGO not found", success: false });
+    }
+
+    // Check if the NGO is verified
+    if (!ngo.isVerified) {
+      return res
+        .status(401)
+        .json({ message: "NGO not verified", success: false });
+    }
+
+    // Create a JWT token
+    const token = createToken(ngo._id); // Assuming you are using the NGO's ID as the payload
+
+    // Send the token in the response (you can send it in a cookie or header)
+    return res
+      .status(200)
+      .cookie("token", token, {
+        maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
+        httpOnly: true, // Prevents access to cookie via JavaScript
+        sameSite: "strict", // Ensures cookies are sent only in same-origin requests
+      })
+      .json({
+        message: "NGO logged in successfully",
+        success: true,
+      });
   } catch (error) {
     console.log(error);
     return res
