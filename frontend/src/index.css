@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --primary-color: #0077B6;
+  --text-color: #03045E;
+  --secondary-color: #00B4D8;
+  --background-color: #CAF0F8;
+  --font: "Urbanist", serif;
+}
+
+body {
+  background-color: var(--primary-color);
+  font-family: var(--font);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-card {
+  background-color: white;
+  width: 800px;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.signup-card {
+  background-color: white;
+  /* height: 600px; */
+  width: 700px;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.logo-div {
+  display: inline-block;
+}
+
+.logo-down {
+  height: 140px;
+  width: 140px;
+}
+
+.confirmation {
+  color: #00B4D8;
+  margin-left: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.confirmation:hover {
+  text-decoration: underline;
+}
+
+.login-content h1 {
+  text-align: center;
+  margin: 3px;
+  margin-bottom: 5px;
+}
+
+.login-content p {
+  text-align: center;
+  margin: 0px;
+}
+
+.login-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+
+.p-placeholder {
+  margin-bottom: 0;
+  margin-left: 8px;
+  margin-top: 5px;
+}
+
+.login-fields input {
+  height: 30px;
+  width: 400px;
+  margin: 10px;
+  margin-bottom: 6px;
+  padding: 3px 6px;
+}
+
+.login-submit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-btn {
+  background-color: var(--text-color);
+  color: white;
+  font-size: large;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 25px;
+  width: 410px;
+  padding: 20px;
+  display: grid;
+  place-content: center;
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+
+.auth-logo {
+  cursor: pointer;
+  height: 30px;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.option {
+  height: 40px;
+  width: 420px;
+  margin-left: 7px;
+  margin-top: 7px;
+  margin-bottom: 5px;
+}
+
+.option-flow {
+  height: 40px;
+  width: 200px;
+  margin-left: 7px;
+  margin-top: 5px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.flow-choice {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .name-field {
+  display: flex;
+  flex-direction: row;
+} */
+
+/* .input-name {
+  width: 50px;
+} */
