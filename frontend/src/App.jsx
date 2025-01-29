@@ -4,25 +4,27 @@ import SignUp from './pages/authentication/SignUp'
 import LoginNgo from './pages/authentication/LoginNgo'
 import { Routes, Route } from 'react-router-dom'
 import { GoogleOAuthProvider } from '@react-oauth/google'
+import Home from './pages/landingpage/Home'
+import ExploreNGO from './pages/explore-ngo-page/ExploreNGO'
 
 const App = () => {
 
-  const LoginVolunteer=()=>{
-    return(
+  const LoginVolunteer = () => {
+    return (
       <GoogleOAuthProvider clientId='110469472851-6qagf9127o3glbgte1nd4n2sigcev0pe.apps.googleusercontent.com'>
         <Login></Login>
       </GoogleOAuthProvider>
     )
   }
-  const LoginNgoG=()=>{
-    return(
+  const LoginNgoG = () => {
+    return (
       <GoogleOAuthProvider clientId='110469472851-6qagf9127o3glbgte1nd4n2sigcev0pe.apps.googleusercontent.com'>
         <LoginNgo></LoginNgo>
       </GoogleOAuthProvider>
     )
   }
-  const Register=()=>{
-    return(
+  const Register = () => {
+    return (
       <GoogleOAuthProvider clientId='110469472851-6qagf9127o3glbgte1nd4n2sigcev0pe.apps.googleusercontent.com'>
         <SignUp></SignUp>
       </GoogleOAuthProvider>
@@ -31,9 +33,11 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path="/volunteer/login" element={<LoginVolunteer/>} />
+        <Route path="/volunteer/login" element={<LoginVolunteer />} />
         <Route path="/signup" element={<Register />} />
         <Route path="/ngo/login" element={<LoginNgoG />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/explorengos" element={<ExploreNGO />} />
       </Routes>
     </div>
   )

@@ -153,9 +153,11 @@ body {
 
 /* Login Button when Loading */
 .loading-button {
-  background-color: #3498db; /* Blue background when loading */
+  background-color: #3498db;
+  /* Blue background when loading */
   color: white;
-  cursor: not-allowed; /* Disable the cursor */
+  cursor: not-allowed;
+  /* Disable the cursor */
   padding: 10px 20px;
   position: relative;
   display: inline-block;
@@ -163,7 +165,8 @@ body {
   text-align: center;
   transition: all 0.3s ease;
   border-radius: 5px;
-  animation: spin 1.5s linear infinite; /* Apply rotation animation */
+  animation: spin 1.5s linear infinite;
+  /* Apply rotation animation */
 }
 
 /* Keyframes for spinning animation */
@@ -171,6 +174,7 @@ body {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
