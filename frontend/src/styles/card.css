@@ -1,0 +1,69 @@
+.card {
+    display: flex;
+    background-color: white;
+    border-radius: 30px;
+    overflow: hidden;
+    margin-top: 20px;
+    color: #03045E;
+    width: 80%;
+    max-width: 800px; /* Ensure the card does not exceed a maximum width */
+    height: 300px;
+    margin: 40px auto; /* Center the card horizontally */
+  }
+  
+  .card-image {
+    width: 50%;
+  }
+  
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .div-inner-card {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .inner-card {
+    background-color: white;
+    text-align: left;
+    border-radius: 20px;
+    border: 2px solid black; /* Add black border */
+    padding: 10px;
+    color: #03045E;
+    width: 100%; /* Adjust width as needed */
+    height: 100%; /* Adjust height as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;    
+  }
+  
+  .inner-card h3 {
+    margin: 0 0 3px 0;
+  }
+  
+  .inner-card p {
+    margin: 0;
+    margin-bottom: 2px;
+    font-size: 15px;
+  }
+  
+  .view-progress-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #03045E;
+    color: #CAF0F8;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .view-progress-button:hover {
+    background-color: green;
+  }
