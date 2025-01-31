@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+/* eslint-disable no-unused-vars */
+import React, { useEffect,useState } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import '../../styles/navbar.css'
@@ -24,7 +25,9 @@ import wingsOfHopeImg from '../../assets/CodeAThon Images/CodeAThon Images/Landi
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Chatbots from '../../components/Chatbots';
+
 
 const Home = () => {
 
@@ -36,6 +39,7 @@ const Home = () => {
   //   slidesToScroll: 1
   // };
 
+   
   const settings = {
     dots: true,
     infinite: true,
@@ -60,6 +64,12 @@ const Home = () => {
         }
       }
     ]
+  };
+  const [isChatbotVisible, setIsChatbotVisible] = useState(false);
+
+  const toggleChatbot = () => {
+    console.log("Clicked");
+    setIsChatbotVisible(!isChatbotVisible);
   };
 
   const duplicateNewsImages = () => {
@@ -119,24 +129,27 @@ const Home = () => {
     }
   ]
 
-  const recommendedDomain = recommendedDomainData.map((data) => (
-    <div className='recommend-card'>
-      <img src={data.img} alt="cooking" />
-      <div className='rec-card-content'>
-        <h2>{data.name}</h2>
-        <p>{data.desc}</p>
-        <button>Apply Now</button>
-      </div>
+  // For the recommended domains
+const recommendedDomain = recommendedDomainData.map((data, index) => (
+  <div className='recommend-card' key={index}>
+    <img src={data.img} alt={data.name} />
+    <div className='rec-card-content'>
+      <h2>{data.name}</h2>
+      <p>{data.desc}</p>
+      <button>Apply Now</button>
     </div>
-  ))
+  </div>
+));
 
-  const peopleVoiceContent = voicePersonData.map((data) => (
-    <div className='card'>
-      <img src={data.img} alt="" />
-      <p className='voice-name'>{data.name}</p>
-      <p className='voice'>{data.voice}</p>
-    </div>
-  ))
+// For the people voice content
+const peopleVoiceContent = voicePersonData.map((data, index) => (
+  <div className='card' key={index}>
+    <img src={data.img} alt={data.name} />
+    <p className='voice-name'>{data.name}</p>
+    <p className='voice'>{data.voice}</p>
+  </div>
+));
+
 
   return (
     <div className='home-container' id="home">
@@ -231,6 +244,12 @@ const Home = () => {
           {peopleVoiceContent}
         </div>
       </div>
+      <div className="floating-button" onClick={toggleChatbot}>
+        <span>💬</span>
+      </div>
+
+      {/* Conditionally Render the Chatbot */}
+      {isChatbotVisible && <Chatbots />}
       <Footer />
     </div >
   )

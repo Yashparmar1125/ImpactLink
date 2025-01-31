@@ -265,3 +265,19 @@ export const updateProgress = async (req, res) => {
   }
 };
 
+export const campaign = async (req, res) => {
+  try {
+    console.log("trigger");
+    const campaigns = await Campaign.find();
+    if (campaigns.length == 0) {
+      return res.status(404).json({ message: "Not found", sucess: false });
+    }
+    return res.status(201).json({ campaigns: campaigns, sucess: true });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: "Server error. Failed to get campaigns.",
+      sucess: false,
+    });
+  }
+};

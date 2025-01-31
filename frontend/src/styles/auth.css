@@ -211,3 +211,10 @@ button:hover {
 button:disabled {
   cursor: not-allowed;
 }
+
+.error-message {
+  color: red;          /* Makes the text red */
+  font-size: 14px;     /* Sets the font size */
+  margin-top: 10px;    /* Adds space above the message */
+  text-align: center;  /* Centers the message horizontally */
+}

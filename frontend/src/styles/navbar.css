@@ -95,3 +95,97 @@ body {
 .auth-btn {
   margin-right: 50px;
 }
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px 40px; /* Added more padding for a spacious layout */
+  border-radius: 10px; /* Rectangular with slight rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px; /* Slightly wider for the rectangular look */
+  max-width: 80%;
+  font-family: var(--font);
+  position: relative; /* To position the close icon */
+}
+
+.modal-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+.login-options {
+  display: flex; /* Align buttons side by side */
+  justify-content: space-between; /* Distribute buttons with equal space */
+  gap: 10px; /* Space between buttons */
+  margin-top: 20px;
+}
+
+.login-option-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px; /* Slightly smaller radius for a modern rectangular look */
+  cursor: pointer;
+  font-weight: 600;
+  flex: 1; /* Allow buttons to expand equally */
+  transition: background-color 0.3s ease;
+}
+
+/* Volunteer Button */
+.login-option-btn.volunteer {
+  background-color: #0077B6; /* Blue for Volunteer */
+  color: white;
+}
+
+.login-option-btn.volunteer:hover {
+  background-color: #005f87; /* Darker blue on hover */
+}
+
+/* NGO Button */
+.login-option-btn.ngo {
+  background-color: #00B4D8; /* Light Blue for NGO */
+  color: white;
+}
+
+.login-option-btn.ngo:hover {
+  background-color: #0097b6; /* Darker light blue on hover */
+}
+
+/* Close button (cross icon at top right corner) */
+.close-modal-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  cursor: pointer;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.close-modal-btn:hover {
+  color: #ff3b30; /* Red shade for hover effect */
+}

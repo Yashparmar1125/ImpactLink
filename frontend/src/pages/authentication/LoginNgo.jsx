@@ -5,23 +5,25 @@ import logo from "../../assets/Images/ImpactLogo.png";
 import google from "../../assets/Images/google.png";
 import facebook from "../../assets/Images/facebook.png";
 import { Link } from "react-router-dom";
-import {useGoogleLogin} from "@react-oauth/google";
-import { googleAuthNgo } from "../../api";
+import { useGoogleLogin } from "@react-oauth/google";
+import { googleAuthNgo } from "../../API/api";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false); // State to track loading
+  const [error, setError] = useState(""); // State for error message
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  const responseGoogle =async(authResult)=>{
+  const responseGoogle = async (authResult) => {
     try {
-      if(authResult['code']){
-        const result=await googleAuthNgo(authResult['code']);
+      if (authResult['code']) {
+        const result = await googleAuthNgo(authResult['code']);
         console.log(result.status);
+        alert("Successfully Logged In");
       }
     } catch (error) {
       console.log(error);
@@ -29,13 +31,14 @@ export default function Login() {
   };
 
   const handleGoogleLogin = useGoogleLogin({
-    onSuccess:responseGoogle,
-    onError:responseGoogle,
-    flow:'auth-code'
+    onSuccess: responseGoogle,
+    onError: responseGoogle,
+    flow: 'auth-code'
   });
 
   const handleClick = async () => {
     setLoading(true); // Start loading
+    setError(""); // Reset any previous error message
     try {
       const url = "http://localhost:5000/api/auth/ngo/login";
 
@@ -51,14 +54,17 @@ export default function Login() {
       // Handle the response
       if (response.ok) {
         const data = await response.json();
+        alert("Successfully Logged In");
         console.log("Successfully Logged In", data);
         // You can redirect or store tokens here if necessary
       } else {
         const errorData = await response.json();
         console.log("Error:", errorData.message);
+        setError(errorData.message); // Set the error message
       }
     } catch (error) {
       console.error("Error while logging in:", error);
+      setError("Something went wrong. Please try again later."); // Set a generic error message
     } finally {
       setLoading(false); // Stop loading after request completes
     }
@@ -102,6 +108,9 @@ export default function Login() {
               </div>
             </div>
           </form>
+
+          {/* Display error message */}
+          {error && <p className="error-message">{error}</p>}
 
           <p>OR</p>
           <div>

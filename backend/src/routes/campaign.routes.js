@@ -18,6 +18,7 @@ import {
   updateCampaign,
   deleteCampaign,
   updateProgress,
+  campaign,
 } from "../controllers/campaign.controller.js";
 
 const router = express.Router();
@@ -44,5 +45,6 @@ router.post(
   validateProgressUpdate,
   updateProgress
 );
+router.get("/get/campaigns", campaign);
 
 export default router;

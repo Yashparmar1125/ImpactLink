@@ -1,0 +1,174 @@
+/* Define the color theme using CSS variables */
+:root {
+  --primary-color: #0077B6;
+  --text-color: #03045E;
+  --secondary-color: #00B4D8;
+  --background-color: #CAF0F8;
+  --font: "Urbanist", serif;
+}
+
+/* Floating button */
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  padding: 15px;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.floating-button:hover {
+  transform: scale(1.1);
+  background-color: var(--secondary-color);
+}
+
+/* Chatbot Container */
+.chatbot-container {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  width: 360px;
+  height: 450px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font);
+  padding-top: 60px; /* Make room for the avatar */
+  animation: fadeIn 0.3s ease-out;
+  overflow: hidden;
+  padding: 15px;
+}
+
+/* Circular Avatar */
+.chatbot-avatar {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+}
+
+/* Chatbot Header */
+.chatbot-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 15px 15px 0 0;
+  text-align: center;
+}
+
+.message-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.message-container p {
+  max-width: 80%;
+  padding: 12px;
+  border-radius: 20px;
+  font-size: 1em;
+  line-height: 1.5;
+  position: relative;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* User's message bubble */
+.user-message {
+  background-color: var(--primary-color);
+  color: white;
+  align-self: flex-end;
+  border-radius: 20px 20px 0 20px;
+}
+
+/* Bot's message bubble */
+.bot-message {
+  background-color: var(--secondary-color);
+  color: white;
+  align-self: flex-start;
+  border-radius: 20px 20px 20px 0;
+}
+
+/* Bot typing indication */
+.bot-typing {
+  font-style: italic;
+  color: #90A4AE;
+  align-self: flex-start;
+}
+
+.input-container {
+  display: flex;
+  padding: 15px;
+  background-color: var(--background-color);
+  border-top: 1px solid #ddd;
+  align-items: center;
+  border-radius: 0 0 15px 15px;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  color: var(--text-color);
+  font-size: 1.1em;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.input-container input:focus {
+  background-color: #f0f0f0;
+}
+
+.input-container button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+  font-size: 1.1em;
+}
+
+.input-container button:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Typing Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

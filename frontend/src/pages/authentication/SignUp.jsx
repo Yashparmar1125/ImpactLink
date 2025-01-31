@@ -6,7 +6,7 @@ import google from "../../assets/Images/google.png";
 import facebook from "../../assets/Images/facebook.png";
 import { Link } from "react-router-dom";
 import Select from "react-select";
-import { googleAuthRegister } from "../../api";
+import { googleAuthRegister } from "../../API/api";
 import {useGoogleLogin} from "@react-oauth/google"
 
 const SignUp = () => {

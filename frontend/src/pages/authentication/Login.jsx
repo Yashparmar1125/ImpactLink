@@ -1,40 +1,45 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import logo from "../../assets/Images/ImpactLogo.png";
 import google from "../../assets/Images/google.png";
 import facebook from "../../assets/Images/facebook.png";
 import { Link } from "react-router-dom";
-import {useGoogleLogin} from "@react-oauth/google"
-import { googleAuthVolunteer } from "../../api";
+import { useGoogleLogin } from "@react-oauth/google";
+import { googleAuthVolunteer } from "../../API/api";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false); // State to track loading
+  const [errorMessage, setErrorMessage] = useState(""); // State to track error message
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  const responseGoogle =async(authResult)=>{
+  const responseGoogle = async (authResult) => {
     try {
-      if (authResult['code']){
-      const result=await googleAuthVolunteer(authResult['code']);
-      console.log(result.status);
-    }
+      if (authResult["code"]) {
+        const result = await googleAuthVolunteer(authResult["code"]);
+        console.log(result.status);
+        alert("Successfully Logged In");
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
   const handleGoogleLogin = useGoogleLogin({
-    onSuccess:responseGoogle,
-    onError:responseGoogle,
-    flow:'auth-code'
+    onSuccess: responseGoogle,
+    onError: responseGoogle,
+    flow: "auth-code",
   });
+
   const handleClick = async () => {
     setLoading(true); // Start loading
+    setErrorMessage(""); // Clear any previous error messages
+
     try {
       const url = "http://localhost:5000/api/auth/volunteer/login";
 
@@ -50,14 +55,16 @@ export default function Login() {
       // Handle the response
       if (response.ok) {
         const data = await response.json();
+        alert("Successfully Logged In");
         console.log("Successfully Logged In", data);
         // You can redirect or store tokens here if necessary
       } else {
         const errorData = await response.json();
-        console.log("Error:", errorData.message);
+        setErrorMessage(errorData.message || "Login failed, please try again.");
       }
     } catch (error) {
       console.error("Error while logging in:", error);
+      setErrorMessage("An error occurred while logging in. Please try again.");
     } finally {
       setLoading(false); // Stop loading after request completes
     }
@@ -102,9 +109,12 @@ export default function Login() {
             </div>
           </form>
 
+          {/* Display error message if it exists */}
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+
           <p>OR</p>
           <div>
-            <img className="auth-logo" src={google} alt="google-logo" onClick={handleGoogleLogin}/>
+            <img className="auth-logo" src={google} alt="google-logo" onClick={handleGoogleLogin} />
             <img className="auth-logo" src={facebook} alt="facebook-logo" />
           </div>
 
