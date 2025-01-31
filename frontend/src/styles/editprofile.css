@@ -1,0 +1,105 @@
+body{
+    background-color: #0077B6;
+}
+
+.edit-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 40px auto; /* Center the component horizontally */
+    width: calc(100% - 20%); /* Adjust width to account for the sidebar */
+    margin-left: 20%; /* Push content to the right to start after the sidebar */
+  }
+  
+  .edit-profile-heading {
+    margin-bottom: 20px;
+    margin-top: 40px;
+    font-size: 20px;
+    color: white;
+  }
+  
+  .edit-profile {
+    background-color: white;
+    padding: 24px;
+    border-radius: 10px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 600px;
+  }
+  
+  .edit-profile-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .edit-icon-img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .profile-pic-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .edit-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #00B4D8;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .edit-profile-form label {
+    margin-bottom: 10px;
+    color: #03045E;
+
+  }
+  
+  .edit-profile-form input,
+  .edit-profile-form select {
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #CAF0F8;
+    color: #0077B6;
+    box-sizing: border-box;
+  }
+  
+  .edit-profile-form input::placeholder {
+    color: #0077B6;
+  }
+  
+  .save-changes-button {
+    padding: 8px 10px;
+    background-color: #00B4D8;
+    color: #03045E;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 24%;
+    align-self: center;
+  }
+  
+  .save-changes-button:hover {
+    background-color: #0077B6;
+  }

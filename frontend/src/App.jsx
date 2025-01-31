@@ -6,6 +6,9 @@ import { Routes, Route } from 'react-router-dom'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import Home from './pages/landingpage/Home'
 import ExploreNGO from './pages/explore-ngo-page/ExploreNGO'
+import Dashboard from './pages/dashboard/volunteer/Dashboard'
+import EditProfile from './pages/dashboard/volunteer/EditProfile'
+import Achievements from './pages/dashboard/volunteer/Achievements'
 
 const App = () => {
 
@@ -37,7 +40,10 @@ const App = () => {
         <Route path="/signup" element={<Register />} />
         <Route path="/ngo/login" element={<LoginNgoG />} />
         <Route path="/" element={<Home />} />
+        <Route path="/editprofile" element={<EditProfile/>} />
         <Route path="/explorengos" element={<ExploreNGO />} />
+        <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/achievements" element={<Achievements/>} />
       </Routes>
     </div>
   )

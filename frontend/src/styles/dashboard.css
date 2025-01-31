@@ -1,0 +1,34 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .main-content {
+    display: flex;
+    flex: 1;
+    margin-top: 60px; /* Add margin to account for the navbar height */
+  }
+  
+  .sidebar {
+    width: 20%;
+    padding: 0px;
+    background-color: #90E0EF;
+    box-sizing: border-box;
+  }
+  
+  .ongoing-campaigns {
+    width: 80%;
+    background-color: #0077B6;
+    padding: 24px;
+    color: white;
+    box-sizing: border-box;
+  }
