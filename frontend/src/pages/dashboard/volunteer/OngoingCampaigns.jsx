@@ -22,8 +22,9 @@ const OngoingCampaigns = () => {
         role="Teaching Assistant"
         duration="30 hours"
         skills="Teaching skills, Patience, Communication skills"
-      />
-        <Card
+      /> 
+        <Card 
+        className="last-card"
         image={VideoEditing}
         title="Education for All"
         role="Teaching Assistant"

@@ -1,6 +1,6 @@
 import React from 'react';
 import Sidebar from '../../../components/Sidebar';
-import OngoingCampaigns from './OngoingCampaigns';
+import OngoingCampaigns from '../volunteer/OngoingCampaigns';
 import Navbar from '../../../components/Navbar';
 import '../../../styles/dashboard.css';
 import '../../../styles/sidebar.css';
