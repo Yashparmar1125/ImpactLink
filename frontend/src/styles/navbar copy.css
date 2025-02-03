@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --primary-color: #0077B6;
+  --text-color: #03045E;
+  --secondary-color: #00B4D8;
+  --background-color: #CAF0F8;
+  --font: "Urbanist", sans-serif;
+}
+
+body {
+  background-color: var(--text-color);
+  font-family: var(--font);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 60px;
+}
+
+.navbar-logo img {
+  height: 60px;
+  margin-right: 50px;
+  padding-left: 30px;
+  margin-top: 10px;
+}
+
+.navlist {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.navlist li {
+  cursor: pointer;
+  font-weight: 600;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.links {
+  text-decoration: none;
+  color: black;
+}
+
+.links:hover {
+  color: var(--secondary-color);
+}
+
+.chatbot-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-logo {
+  height: 20px;
+  /* Matches other logo sizes */
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.login-home,
+.signup-home {
+  background-color: #0077B6;
+  color: white;
+  border-radius: 32px;
+  margin: 4px;
+}
+
+.signup-home {
+  background-color: #00B4D8;
+  color: white;
+  border-radius: 32px;
+  margin: 4px;
+}
+
+.auth-btn {
+  margin-right: 50px;
+}

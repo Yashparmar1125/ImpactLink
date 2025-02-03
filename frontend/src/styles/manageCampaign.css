@@ -1,0 +1,146 @@
+.manage-campaign-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.manage-campaign-content {
+    display: flex;
+    flex: 1;
+}
+
+.manage-campaign {
+    flex: 1;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.manage-campaign h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: white;
+    margin-left: 320px;
+    align-items: center;
+}
+
+.campaign-details
+{
+    margin-top: 20px;
+}
+
+.campaign-box {
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    width: 800px;
+    margin-left: 300px;
+    max-width: 800px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.campaign-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.campaign-text {
+    flex: 1;
+}
+
+.campaign-text h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #03045E;
+}
+
+.campaign-text p {
+    margin: 5px 0 0;
+    font-size: 16px;
+    color: #03045E;
+}
+
+.campaign-image {
+    flex: 0 0 100px;
+    margin-left: 20px;
+}
+
+.campaign-image img {
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+.rounded-box {
+    background-color: #90E0EF;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    color: #03045E;
+    margin-bottom: 30px;
+
+}
+
+.intern-request {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.intern-image img {
+    width: 100px;
+    margin-left: 40px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.intern-details {
+    flex: 1;
+    margin-left: 60px;
+    text-align: left;
+}
+
+.intern-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #03045E;
+}
+
+.intern-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 60px;
+}
+
+.accept-button, .reject-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100px;
+    margin-top: 5px;
+}
+
+.accept-button {
+    background-color: #03045E;
+    color: #CAF0F8;
+}
+
+.reject-button {
+    background-color: red;
+    color: white;
+}

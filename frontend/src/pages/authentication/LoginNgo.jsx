@@ -7,8 +7,9 @@ import facebook from "../../assets/Images/facebook.png";
 import { Link } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import { googleAuthNgo } from "../../API/api";
-
+import { useNavigate } from 'react-router-dom';
 export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false); // State to track loading
@@ -23,6 +24,7 @@ export default function Login() {
       if (authResult['code']) {
         const result = await googleAuthNgo(authResult['code']);
         console.log(result.status);
+        navigate('/ngodashboard')
         alert("Successfully Logged In");
       }
     } catch (error) {

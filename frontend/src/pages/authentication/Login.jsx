@@ -7,8 +7,10 @@ import facebook from "../../assets/Images/facebook.png";
 import { Link } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import { googleAuthVolunteer } from "../../API/api";
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false); // State to track loading
@@ -23,7 +25,8 @@ export default function Login() {
       if (authResult["code"]) {
         const result = await googleAuthVolunteer(authResult["code"]);
         console.log(result.status);
-        alert("Successfully Logged In");
+        
+        navigate('/dashboard');
       }
     } catch (error) {
       console.log(error);
@@ -48,14 +51,17 @@ export default function Login() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          
         },
+        credentials: "include",
         body: JSON.stringify({ email, password }),
       });
 
       // Handle the response
       if (response.ok) {
         const data = await response.json();
-        alert("Successfully Logged In");
+        navigate('/dashboard');
+        
         console.log("Successfully Logged In", data);
         // You can redirect or store tokens here if necessary
       } else {

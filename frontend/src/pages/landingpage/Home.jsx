@@ -143,7 +143,7 @@ const recommendedDomain = recommendedDomainData.map((data, index) => (
 
 // For the people voice content
 const peopleVoiceContent = voicePersonData.map((data, index) => (
-  <div className='card' key={index}>
+  <div className='card-item' key={index}>
     <img src={data.img} alt={data.name} />
     <p className='voice-name'>{data.name}</p>
     <p className='voice'>{data.voice}</p>

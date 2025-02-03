@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --primary-color: #0077B6;
+  --text-color: #03045E;
+  --secondary-color: #00B4D8;
+  --background-color: #CAF0F8;
+  --font: "Urbanist", serif;
+}
+
+body {
+  background-color: #A9DEF9;
+  font-family: var(--font);
+  min-height: 100vh;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  background-color: white;
+  height: 1050px;
+  width: 900px;
+  margin: 100px;
+  border-radius: 20px;
+  padding-bottom: 20px;
+}
+
+.header-div {
+  height: 100px;
+  background-color: #0077B6;
+  color: white;
+  font-size: larger;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.main-div {
+  padding: 0 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+.header-div p {
+  font-size: larger;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px;
+  width: 100%;
+}
+
+
+.input input {
+  height: 30px;
+  width: 300px;
+  margin-top: 2px;
+  margin-bottom: 6px;
+  padding: 3px 6px;
+}
+
+.input h3 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.left-field {
+  margin-left: 20px;
+}
+
+.right-field {
+  margin-left: 80px;
+}
+
+.form-content {
+  margin: 0 55px;
+}
+
+.confirmation {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.submit-btn button {
+  font-size: larger;
+}
+
+.submit-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}

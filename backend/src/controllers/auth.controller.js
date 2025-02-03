@@ -46,9 +46,11 @@ export const register = async (req, res) => {
     return res
       .status(200)
       .cookie("token", token, {
+        domain: "localhost",
         maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
         httpOnly: true, // Prevents access to cookie via JavaScript
-        sameSite: "strict", // Ensures cookies are sent only in same-origin requests
+        sameSite: "strict",
+        secure: false, // Ensures cookies are sent only in same-origin requests
       })
       .json({
         message: "Volunteer registered successfully",
@@ -88,9 +90,11 @@ export const login = async (req, res) => {
     return res
       .status(200)
       .cookie("token", token, {
+        domain: "localhost",
         maxAge: 1 * 24 * 60 * 60 * 1000, // 1 day
         httpOnly: true, // Prevents access to cookie via JavaScript
         sameSite: "strict", // Ensures cookies are sent only in same-origin requests
+        secure: false,
       })
       .json({
         message: "Logged in successfully",
