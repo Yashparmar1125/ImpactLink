@@ -83,7 +83,7 @@ width: 1000px;
   box-sizing: border-box;
   display: flex;  /* Enables Flexbox */
   justify-content: space-between; /* Spaces sections evenly */
-  align-items: center; /
+  align-items: center;
 }
 .certificates-text {
   flex: 1;  /* Takes 50% of the width */

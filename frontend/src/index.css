@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global CSS Reset and Clean Backgrounds */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background: transparent !important;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Inter', 'Urbanist', Arial, sans-serif;
+}
+
+#root {
+  background: transparent !important;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Remove any conflicting background styles */
+body, html, #root {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Override any potential global background styles */
+body, html, #root, .App, .app {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* Ensure Home page specific overrides */
+.home-container, .home-page, .landing-page {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Override any achievements or other page backgrounds that might leak */
+.achievements-section, .achievements-container {
+  background: transparent !important;
+}
+
+/* Custom Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes width-expand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 4rem;
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up-delay {
+  animation: fade-in-up 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-2 {
+  animation: fade-in-up 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-3 {
+  animation: fade-in-up 0.8s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-width-expand {
+  animation: width-expand 1s ease-out forwards;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s infinite;
+}
+
+.animate-bounce-slow-delay {
+  animation: bounce-slow 2s infinite 0.5s;
+}
+
+/* Remove or comment out any old global CSS imports here */ 

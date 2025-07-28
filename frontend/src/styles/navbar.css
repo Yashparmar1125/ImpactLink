@@ -2,10 +2,12 @@
 
 :root {
   --primary-color: #0077B6;
-  --text-color: #03045E;
   --secondary-color: #00B4D8;
-  --background-color: #CAF0F8;
-  --font: "Urbanist", sans-serif;
+  --accent-color: #CAF0F8;
+  --text-color: #222;
+  --bg-color: #f7fafd;
+  --font-main: 'Inter', 'Urbanist', Arial, sans-serif;
+  --radius: 14px;
 }
 
 body {
@@ -19,173 +21,158 @@ body {
 }
 
 .navbar {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e5eaf1;
+}
+
+.navbar .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  height: 60px;
+  height: 100%;
 }
 
 .navbar-logo img {
-  height: 60px;
-  margin-right: 50px;
-  padding-left: 30px;
-  margin-top: 10px;
+  height: 44px;
+  margin-right: 32px;
+  padding-left: 0;
+  margin-top: 0;
 }
 
 .navlist {
   display: flex;
   list-style: none;
-  gap: 30px;
+  gap: 32px;
   margin: 0;
   padding: 0;
 }
 
 .navlist li {
-  cursor: pointer;
   font-weight: 600;
-  color: black;
-  transition: color 0.3s ease;
+  color: var(--text-color);
+  font-family: var(--font-main);
+  font-size: 1.08rem;
+  transition: color 0.2s;
 }
 
 .links {
   text-decoration: none;
-  color: black;
+  color: var(--text-color);
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-bottom 0.2s;
 }
-
-.links:hover {
-  color: var(--secondary-color);
-}
-
-.chatbot-logo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.chat-logo {
-  height: 20px;
-  /* Matches other logo sizes */
-  cursor: pointer;
-  margin-left: 5px;
-}
-
-.login-home,
-.signup-home {
-  background-color: #0077B6;
-  color: white;
-  border-radius: 32px;
-  margin: 4px;
-}
-
-.signup-home {
-  background-color: #00B4D8;
-  color: white;
-  border-radius: 32px;
-  margin: 4px;
+.links:hover, .navlist li:hover .links {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .auth-btn {
-  margin-right: 50px;
+  display: flex;
+  gap: 10px;
+  margin-right: 0;
+}
+.login-home, .signup-home {
+  background: var(--primary-color);
+  color: #fff;
+  border-radius: 20px;
+  border: none;
+  padding: 8px 22px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.signup-home {
+  background: var(--secondary-color);
+}
+.login-home:hover, .signup-home:hover {
+  background: var(--accent-color);
+  color: var(--primary-color);
+  transform: scale(1.05);
 }
 
 /* Modal Styles */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 2000;
 }
-
 .modal-content {
-  background-color: white;
-  padding: 30px 40px; /* Added more padding for a spacious layout */
-  border-radius: 10px; /* Rectangular with slight rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  padding: 32px 40px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   text-align: center;
-  width: 350px; /* Slightly wider for the rectangular look */
-  max-width: 80%;
-  font-family: var(--font);
-  position: relative; /* To position the close icon */
+  width: 350px;
+  max-width: 90vw;
+  font-family: var(--font-main);
+  position: relative;
 }
-
 .modal-content h2 {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--primary-color);
   margin-bottom: 20px;
 }
-
 .modal-content p {
   font-size: 1rem;
   color: var(--text-color);
   margin-bottom: 20px;
 }
-
 .login-options {
-  display: flex; /* Align buttons side by side */
-  justify-content: space-between; /* Distribute buttons with equal space */
-  gap: 10px; /* Space between buttons */
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
   margin-top: 20px;
 }
-
 .login-option-btn {
   padding: 12px 24px;
   border: none;
-  border-radius: 5px; /* Slightly smaller radius for a modern rectangular look */
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 600;
-  flex: 1; /* Allow buttons to expand equally */
-  transition: background-color 0.3s ease;
+  font-weight: 700;
+  flex: 1;
+  transition: background 0.2s;
+  background: var(--primary-color);
+  color: #fff;
 }
-
-/* Volunteer Button */
-.login-option-btn.volunteer {
-  background-color: #0077B6; /* Blue for Volunteer */
-  color: white;
-}
-
-.login-option-btn.volunteer:hover {
-  background-color: #005f87; /* Darker blue on hover */
-}
-
-/* NGO Button */
-.login-option-btn.ngo {
-  background-color: #00B4D8; /* Light Blue for NGO */
-  color: white;
-}
-
-.login-option-btn.ngo:hover {
-  background-color: #0097b6; /* Darker light blue on hover */
-}
-
-/* Close button (cross icon at top right corner) */
+.login-option-btn.volunteer { background: var(--primary-color); }
+.login-option-btn.ngo { background: var(--secondary-color); }
+.login-option-btn:hover { background: var(--accent-color); color: var(--primary-color); }
 .close-modal-btn {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: transparent;
+  background: transparent;
   border: none;
   font-size: 1.5rem;
   color: var(--text-color);
   cursor: pointer;
   font-weight: 700;
-  transition: color 0.3s ease;
+  transition: color 0.2s;
 }
+.close-modal-btn:hover { color: #ff3b30; }
 
-.close-modal-btn:hover {
-  color: #ff3b30; /* Red shade for hover effect */
+@media (max-width: 900px) {
+  .navlist { gap: 16px; }
+  .navbar-logo img { height: 36px; }
+}
+@media (max-width: 600px) {
+  .navbar .container { flex-direction: column; gap: 8px; height: auto; }
+  .navlist { flex-wrap: wrap; gap: 8px; }
+  .auth-btn { flex-direction: column; gap: 4px; }
 }
