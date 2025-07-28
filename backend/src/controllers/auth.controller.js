@@ -85,6 +85,7 @@ export const login = async (req, res) => {
 
     // Create a JWT token
     const token = createToken(user._id);
+    delete user.password;
 
     // Send the token in the cookie with proper settings
     return res
@@ -99,6 +100,7 @@ export const login = async (req, res) => {
       .json({
         message: "Logged in successfully",
         success: true,
+        user,
       });
   } catch (error) {
     return res

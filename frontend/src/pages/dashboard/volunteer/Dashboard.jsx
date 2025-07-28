@@ -18,19 +18,17 @@ const Dashboard = () => {
       <Navbar />
       
       {/* Main Content */}
-      <div className="relative z-10 flex min-h-screen">
+      <div className="relative z-10 flex min-h-screen pt-16">
         {/* Sidebar */}
-        <div className="w-72 lg:w-80 bg-white/80 backdrop-blur-xl border-r border-white/20 shadow-xl">
-          <Sidebar />
-        </div>
+        <Sidebar />
         
         {/* Main Dashboard Content */}
-        <div className="flex-1 p-4 sm:p-6 lg:p-8">
+        <div className="flex-1 p-4 sm:p-6 lg:p-8 lg:ml-0">
           <div className="w-full max-w-none">
             {/* Dashboard Header */}
             <div className="mb-6 lg:mb-8">
               <div className="flex items-center space-x-3 mb-3 lg:mb-4">
-                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
                   <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
@@ -48,10 +46,10 @@ const Dashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm lg:text-base font-medium text-gray-600">Active Campaigns</p>
-                    <p className="text-xl lg:text-2xl font-bold text-primary">3</p>
+                    <p className="text-xl lg:text-2xl font-bold text-blue-600">3</p>
                   </div>
                   <div className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-                    <svg className="w-5 h-5 lg:w-6 lg:h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 lg:w-6 lg:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                     </svg>
                   </div>
@@ -62,10 +60,10 @@ const Dashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm lg:text-base font-medium text-gray-600">Hours Completed</p>
-                    <p className="text-xl lg:text-2xl font-bold text-secondary">120</p>
+                    <p className="text-xl lg:text-2xl font-bold text-indigo-600">120</p>
                   </div>
-                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                    <svg className="w-5 h-5 lg:w-6 lg:h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-indigo-100 rounded-xl flex items-center justify-center">
+                    <svg className="w-5 h-5 lg:w-6 lg:h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
@@ -76,7 +74,7 @@ const Dashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm lg:text-base font-medium text-gray-600">Achievements</p>
-                    <p className="text-xl lg:text-2xl font-bold text-accent">8</p>
+                    <p className="text-xl lg:text-2xl font-bold text-purple-600">8</p>
                   </div>
                   <div className="w-10 h-10 lg:w-12 lg:h-12 bg-purple-100 rounded-xl flex items-center justify-center">
                     <svg className="w-5 h-5 lg:w-6 lg:h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -90,10 +88,10 @@ const Dashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm lg:text-base font-medium text-gray-600">Impact Score</p>
-                    <p className="text-xl lg:text-2xl font-bold text-indigo-600">95%</p>
+                    <p className="text-xl lg:text-2xl font-bold text-blue-700">95%</p>
                   </div>
-                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-indigo-100 rounded-xl flex items-center justify-center">
-                    <svg className="w-5 h-5 lg:w-6 lg:h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                    <svg className="w-5 h-5 lg:w-6 lg:h-6 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                     </svg>
                   </div>
@@ -105,14 +103,14 @@ const Dashboard = () => {
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-white/20 shadow-xl p-6 lg:p-8">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 lg:mb-6 gap-3">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-blue-600 rounded-xl flex items-center justify-center">
                     <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <h2 className="text-xl lg:text-2xl font-bold text-gray-900">Ongoing Campaigns</h2>
                 </div>
-                <button className="px-4 lg:px-6 py-2 lg:py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-xl hover:from-secondary hover:to-primary transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl text-sm lg:text-base font-medium">
+                <button className="px-4 lg:px-6 py-2 lg:py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white rounded-xl hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl text-sm lg:text-base font-medium">
                   View All
                 </button>
               </div>

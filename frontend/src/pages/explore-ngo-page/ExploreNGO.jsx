@@ -206,23 +206,28 @@ const ExploreNGO = () => {
       {/* Main Content */}
       <div className="relative z-10 pt-16">
         {/* Hero Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
-          <div className="text-center mb-6 lg:mb-8">
-            <h1 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-3 lg:mb-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+          <div className="text-center mb-8 lg:mb-12">
+            <div className="inline-block mb-6 animate-fade-in">
+              <div className="w-20 h-1 bg-blue-600 mx-auto mb-4 animate-width-expand"></div>
+            </div>
+            <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 lg:mb-6">
               Explore <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">NGOs</span>
             </h1>
-            <p className="text-base lg:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              We are proud to collaborate with 500+ NGOs dedicated to making a positive impact in various fields. 
+            <p className="text-lg lg:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              We are proud to collaborate with <span className="font-semibold text-blue-600">500+ NGOs</span> dedicated to making a positive impact in various fields. 
               Whether you&apos;re looking to volunteer, support a cause, or partner with an organization, 
               you&apos;ll surely find the perfect NGO here to make a difference!
             </p>
           </div>
 
           {/* Filters Section */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl p-4 lg:p-6 mb-6 lg:mb-8">
-            <div className="flex items-center space-x-2 mb-3 lg:mb-4">
-              <img className="w-4 h-4 lg:w-5 lg:h-5" src={filter} alt="filter" />
-              <h2 className="text-lg lg:text-xl font-bold text-gray-900">Find Your Perfect Match</h2>
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl border border-white/20 shadow-xl p-6 lg:p-8 mb-8 lg:mb-10">
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                <img className="w-4 h-4" src={filter} alt="filter" />
+              </div>
+              <h2 className="text-xl lg:text-2xl font-bold text-gray-900">Find Your Perfect Match</h2>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
@@ -299,58 +304,78 @@ const ExploreNGO = () => {
             </div>
 
             {/* NGO Cards Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
               {filteredNgoData.map((data, index) => (
-                <div key={index} className="bg-white/80 backdrop-blur-sm rounded-xl border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="p-4 lg:p-6">
-                    <div className="flex flex-col sm:flex-row gap-3 mb-3">
-                      <img 
-                        src={data.img} 
-                        alt={data.name}
-                        className="w-full sm:w-16 h-16 rounded-lg object-cover shadow-md"
-                      />
+                <div key={index} className="bg-white/90 backdrop-blur-sm rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
+                  <div className="p-6 lg:p-8">
+                    <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                      <div className="w-full sm:w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                        <img 
+                          src={data.img} 
+                          alt={data.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
                       <div className="flex-1">
-                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
                           <div className="flex-1">
-                            <h3 className="text-base lg:text-lg font-bold text-gray-900 mb-1">{data.name}</h3>
-                            <p className="text-sm lg:text-base font-semibold text-primary mb-1">{data.role}</p>
+                            <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">{data.name}</h3>
+                            <p className="text-base lg:text-lg font-semibold text-primary mb-2">{data.role}</p>
                           </div>
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${getUrgencyColor(data.urgency)}`}>
+                          <span className={`px-3 py-1 rounded-full text-xs font-medium ${getUrgencyColor(data.urgency)}`}>
                             {data.urgency}
                           </span>
                         </div>
-                        <p className="text-xs lg:text-sm text-gray-600 mb-1">{data.location}</p>
-                        <div className="flex items-center space-x-3 text-xs text-gray-500">
-                          <span>⏱️ {data.duration}</span>
-                          <span>👥 {data.volunteers_needed} needed</span>
+                        <div className="space-y-2 mb-4">
+                          <p className="text-sm text-gray-600 flex items-center">
+                            <svg className="w-4 h-4 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            {data.location}
+                          </p>
+                          <div className="flex items-center space-x-4 text-sm text-gray-500">
+                            <span className="flex items-center">
+                              <svg className="w-4 h-4 mr-1 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              {data.duration}
+                            </span>
+                            <span className="flex items-center">
+                              <svg className="w-4 h-4 mr-1 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                              </svg>
+                              {data.volunteers_needed} needed
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
                     
-                    <div className="mb-3">
-                      <p className="text-xs lg:text-sm text-gray-700">
-                        <span className="font-semibold">Skills Required:</span> {data.skills}
+                    <div className="mb-4">
+                      <p className="text-sm text-gray-700 leading-relaxed">
+                        <span className="font-semibold text-gray-900">Skills Required:</span> {data.skills}
                       </p>
                     </div>
                     
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      <span className="px-2 py-1 bg-blue-100 text-primary rounded-full text-xs font-medium">
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      <span className="px-3 py-1 bg-blue-100 text-primary rounded-full text-sm font-medium border border-blue-200">
                         {data.interest}
                       </span>
                     </div>
                     
-                    <div className="flex flex-col sm:flex-row gap-2">
+                    <div className="flex flex-col sm:flex-row gap-3">
                       <button 
                         onClick={() => handleApplyNow(data.name)}
-                        className="flex-1 px-3 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-lg hover:from-secondary hover:to-primary transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg font-medium text-xs lg:text-sm"
+                        className="flex-1 px-4 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-xl hover:from-secondary hover:to-primary transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg font-medium text-sm group-hover:shadow-xl"
                       >
                         Apply Now
                       </button>
                       <button 
                         onClick={() => handleSeeDetails(data.name)}
-                        className="px-3 py-2 bg-white border-2 border-primary text-primary rounded-lg hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg font-medium text-xs lg:text-sm"
+                        className="px-4 py-3 bg-white border-2 border-primary text-primary rounded-xl hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg font-medium text-sm group-hover:shadow-xl"
                       >
-                        Details
+                        View Details
                       </button>
                     </div>
                   </div>
@@ -360,14 +385,14 @@ const ExploreNGO = () => {
 
             {/* Empty State */}
             {filteredNgoData.length === 0 && (
-              <div className="text-center py-6 lg:py-8">
-                <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3 lg:mb-4">
-                  <svg className="w-8 h-8 lg:w-10 lg:h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="text-center py-12 lg:py-16">
+                <div className="w-20 h-20 lg:w-24 lg:h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-10 h-10 lg:w-12 lg:h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
                 </div>
-                <h3 className="text-base lg:text-lg font-semibold text-gray-900 mb-2">No Opportunities Found</h3>
-                <p className="text-gray-600 mb-3 lg:mb-4 text-xs lg:text-sm">Try adjusting your filters to find more volunteer opportunities.</p>
+                <h3 className="text-xl lg:text-2xl font-semibold text-gray-900 mb-3">No Opportunities Found</h3>
+                <p className="text-gray-600 mb-6 text-base lg:text-lg max-w-md mx-auto">Try adjusting your filters to find more volunteer opportunities that match your interests and skills.</p>
                 <button 
                   onClick={() => {
                     setInterest(null);
@@ -375,24 +400,24 @@ const ExploreNGO = () => {
                     setAvailability(null);
                     setDomain(null);
                   }}
-                  className="px-3 lg:px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-lg hover:from-secondary hover:to-primary transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg font-medium text-xs lg:text-sm"
+                  className="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-xl hover:from-secondary hover:to-primary transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg font-medium text-base"
                 >
-                  Clear Filters
+                  Clear All Filters
                 </button>
               </div>
             )}
           </div>
 
           {/* Pagination */}
-          <div className="flex justify-center">
-            <div className="flex items-center space-x-2">
-              <button className="px-2 lg:px-3 py-1 lg:py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-300 text-xs lg:text-sm">
+          <div className="flex justify-center mt-8 lg:mt-12">
+            <div className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-xl p-2 shadow-lg">
+              <button className="px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-300 text-sm font-medium">
                 Previous
               </button>
-              <button className="px-2 lg:px-3 py-1 lg:py-2 bg-primary text-white rounded-lg text-xs lg:text-sm">1</button>
-              <button className="px-2 lg:px-3 py-1 lg:py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-300 text-xs lg:text-sm">2</button>
-              <button className="px-2 lg:px-3 py-1 lg:py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-300 text-xs lg:text-sm">3</button>
-              <button className="px-2 lg:px-3 py-1 lg:py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-300 text-xs lg:text-sm">
+              <button className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium">1</button>
+              <button className="px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-300 text-sm font-medium">2</button>
+              <button className="px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-300 text-sm font-medium">3</button>
+              <button className="px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors duration-300 text-sm font-medium">
                 Next
               </button>
             </div>

@@ -72,19 +72,17 @@ const Achievements = () => {
       <Navbar />
       
       {/* Main Content */}
-      <div className="relative z-10 flex min-h-screen">
+      <div className="relative z-10 flex min-h-screen pt-16">
         {/* Sidebar */}
-        <div className="w-72 lg:w-80 bg-white/80 backdrop-blur-xl border-r border-white/20 shadow-xl">
-          <Sidebar />
-        </div>
+        <Sidebar />
         
         {/* Main Content */}
-        <div className="flex-1 p-4 sm:p-6 lg:p-8">
+        <div className="flex-1 p-4 sm:p-6 lg:p-8 lg:ml-0">
           <div className="w-full max-w-none">
             {/* Page Header */}
             <div className="mb-6 lg:mb-8">
               <div className="flex items-center space-x-3 mb-3 lg:mb-4">
-                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
                   <svg className="w-5 h-5 lg:w-6 lg:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                   </svg>
@@ -116,7 +114,7 @@ const Achievements = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm lg:text-base font-medium text-gray-600">Certificates</p>
-                    <p className="text-xl lg:text-2xl font-bold text-secondary">{certificates.length}</p>
+                    <p className="text-xl lg:text-2xl font-bold text-indigo-600">{certificates.length}</p>
                   </div>
                   <div className="w-10 h-10 lg:w-12 lg:h-12 bg-green-100 rounded-xl flex items-center justify-center">
                     <svg className="w-5 h-5 lg:w-6 lg:h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -130,7 +128,7 @@ const Achievements = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm lg:text-base font-medium text-gray-600">Total Hours</p>
-                    <p className="text-xl lg:text-2xl font-bold text-accent">90</p>
+                    <p className="text-xl lg:text-2xl font-bold text-purple-600">90</p>
                   </div>
                   <div className="w-10 h-10 lg:w-12 lg:h-12 bg-purple-100 rounded-xl flex items-center justify-center">
                     <svg className="w-5 h-5 lg:w-6 lg:h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
